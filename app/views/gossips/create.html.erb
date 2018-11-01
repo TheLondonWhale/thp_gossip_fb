@@ -1,0 +1,8 @@
+<h1>Nouveau Gossip</h1>
+
+<%= form_for @gossip do |f|%>
+  <%= f.label :title, "Titre" %>
+  <%= f.text_field :title %>
+  <%= f.text_area :content%>
+  <%= f.text_field :anonymousgossiper%>
+<% end %>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <p><%= link_to "Créer un nouveau gossip", new_gossip_path %></p>
+
+
+    <table>
+      <thead>
+        COUCOU CA C'EST TOUS LES GOSSIPS
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Le gossip n°</td> <td>titre</td> <td>Contenu</td> <td>Lien vers le Gossip</td>
+        </tr>
+        <% @list.each do |gossip| %>
+        <tr>
+          <td><%= gossip.id%></td><td><%= gossip.anonymousgossiper %></td><td><%= gossip.content%></td><td><%= link_to "lien", gossip_path(gossip.id) %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </body>
+</html>

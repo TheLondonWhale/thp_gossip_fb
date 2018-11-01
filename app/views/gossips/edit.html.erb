@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <p> Editer Le gossip n°<%= @gossip.id%> :</p>
+
+    <p> Titre: <%= @gossip.title%> </p>
+
+    <%= form_for @gossip do |f|%>
+      <div class="form-group">
+        <%= f.label :content, "Contenu" %>
+        <%= f.text_area :content%> <br />
+        <%= f.label :anonymousgossiper, "Ton petit pseudo" %>
+        <%= f.text_field :anonymousgossiper%> <br />
+        <%= f.submit "#EditTonGossip" %>
+      </div>
+    <% end %>
+
+    <%= link_to "Retour à l'Accueil", '/' %>
+
+    <p> On peut aussi le supprimer</p> <br />
+    <%= link_to 'Clique pour détruire', @gossip, method: :delete %>
+
+  </body>
+</html>

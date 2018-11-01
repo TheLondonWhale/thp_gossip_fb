@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h2> Voici Le gossip n°<%= @gossip.id%> :</h2>
+    <p> <%= @gossip.content%> </p>
+    <p> <i> Auteur: <%= @gossip.anonymousgossiper %> </i> </p>
+    <%= link_to "Editer/supprimer le gossip", edit_gossip_path(@gossip.id) %> <br />
+
+    <h2>Ajouter un commentaire:</h2>
+      <%= form_with(model: [ @gossip, @gossip.comments.build ], local: true) do |form| %>
+      <p>
+        <%= form.label :anonymous_commentor %><br>
+        <%= form.text_field :anonymous_commentor %>
+      </p>
+      <p>
+        <%= form.label :content %><br>
+        <%= form.text_area :content %>
+      </p>
+      <p>
+        <%= form.submit "#BalanceTonComm"%>
+      </p>
+    <% end %>
+
+    <h2>Commentaires</h2>
+
+    <table>
+      <thead>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Le comm'</td> <td>titre</td> <td>Contenu</td> <td>Lien vers le comm'</td>
+        </tr>
+        <% @gossip.comments.each do |comment|%>
+        <tr>
+          <td><%= comment.id%></td>
+          <td><%= comment.anonymous_commentor %></td>
+          <td><%= comment.content%></td>
+           <!-- <td><%= link_to "Editer/supprimer", edit_gossip_comment_path(comment.id) %></td> -->
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to "Retour à l'Accueil", '/' %>
+
+
+  </body>
+</html>
